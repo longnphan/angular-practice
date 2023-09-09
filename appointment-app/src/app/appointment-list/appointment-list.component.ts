@@ -7,9 +7,27 @@ import { Appointment } from '../models/appointment';
   styleUrls: ['./appointment-list.component.css'],
 })
 export class AppointmentListComponent {
-  appointment: Appointment = {
-    id: 1,
-    title: "Take dog for a walk",
-    date: new Date("2023-07-30")
+  newAppointmentTitle: string = '';
+  newAppointmentDate: Date = new Date();
+
+  appointments: Appointment[] = [];
+
+  addAppointment() {
+    if (this.newAppointmentDate && this.newAppointmentTitle.trim().length) {
+      let newAppointment: Appointment = {
+        id: Date.now(),
+        title: this.newAppointmentTitle,
+        date: this.newAppointmentDate,
+      };
+
+      this.appointments.push(newAppointment);
+
+      this.newAppointmentTitle = '';
+      this.newAppointmentDate = new Date();
+    }
+  }
+
+  deleteAppointment(index: number) {
+    this.appointments.splice(index, 1)
   }
 }
