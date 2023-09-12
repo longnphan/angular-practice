@@ -1,0 +1,20 @@
+<app-warning-alert></app-warning-alert>
+<app-success-alert></app-success-alert>
+<h1>{{ inputText }}</h1>
+<input type="text" [(ngModel)]="inputText" />
+<hr />
+
+<button [disabled]="inputText === ''" (click)="clearInput()">Clear Text</button>
+
+<br />
+<hr />
+<p *ngIf="serverCreated; else noServer">Server has been created</p>
+<ng-template #noServer>
+  <p #noServer>No server was created</p>
+</ng-template>
+
+<button (click)="onCreateServer()">Create Server</button>
+
+<app-server></app-server>
+<hr>
+<app-assignment></app-assignment>

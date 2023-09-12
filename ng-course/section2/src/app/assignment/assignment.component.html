@@ -1,0 +1,7 @@
+<h1>Assignment #3</h1>
+<button (click)="onClick()">Display Details</button>
+<p *ngIf="show">Show</p>
+<div *ngFor="let item of arr; let i = index"
+[ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+[ngClass]="{'white-text': i >= 4}"
+>{{ i }}</div>
